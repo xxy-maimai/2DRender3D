@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "edq1coe8zcI=",
+  "success": true,
+  "projectFilePath": "E:\\CSharpProjects\\2DRender3D\\2DRender3D\\2DRender3D\\2DRender3D.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\xxy__\\.nuget\\packages\\raylib-cs\\7.0.2\\raylib-cs.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
