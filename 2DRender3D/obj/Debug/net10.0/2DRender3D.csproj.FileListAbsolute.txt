@@ -20,3 +20,4 @@ E:\CSharpProjects\2DRender3D\2DRender3D\2DRender3D\obj\Debug\net10.0\refint\2DRe
 E:\CSharpProjects\2DRender3D\2DRender3D\2DRender3D\obj\Debug\net10.0\2DRender3D.pdb
 E:\CSharpProjects\2DRender3D\2DRender3D\2DRender3D\obj\Debug\net10.0\2DRender3D.genruntimeconfig.cache
 E:\CSharpProjects\2DRender3D\2DRender3D\2DRender3D\obj\Debug\net10.0\ref\2DRender3D.dll
+E:\CSharpProjects\2DRender3D\2DRender3D\2DRender3D\obj\Debug\net10.0\2DRender3D.sourcelink.json
