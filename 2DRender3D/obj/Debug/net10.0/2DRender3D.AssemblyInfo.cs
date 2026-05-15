@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("2DRender3D")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd66f955523f221d28b50efed61af867b908e0e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3916d2e2781d334a89cdd1d57483a553f8eca980")]
 [assembly: System.Reflection.AssemblyProductAttribute("2DRender3D")]
 [assembly: System.Reflection.AssemblyTitleAttribute("2DRender3D")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

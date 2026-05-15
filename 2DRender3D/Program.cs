@@ -13,7 +13,7 @@ class Program
     const int windowWidth = 1000;
     const int windowHeight = 800;
     const string windowTitle = "2DRender3D";
-    const double camera_scale = 200;
+    const double camera_scale = 500;
     const double move_scale = 3;
     const double mouse_flex = 200;
     public static Vector3 camera_pos = new Vector3(0, 0, 0);
@@ -70,7 +70,6 @@ class Program
 
             if (Raylib.IsKeyDown(KeyboardKey.W))
             {
-
                 camera_pos += vForward;
             }
             if (Raylib.IsKeyDown(KeyboardKey.S))
@@ -113,15 +112,15 @@ class Program
 
     public static Vector2 ProjectToCamera(Vector3 original_vector)
     {
-        double distance = Vector3.Dot(vFront , original_vector - camera_pos) / Vector3.Dot(vFront , vFront);
+        double distance = Vector3.Dot(vFront, original_vector - camera_pos);
         Vector3 project_vector = original_vector - Convert.ToSingle(distance) * vFront;
         Vector3 project_face_vector = project_vector - camera_pos;
-        if(distance < 0)
+        if(distance <= 1e-5)
         {
             return new Vector2(0xdeadbeef, 0xdeadbeef);
         }
-        float x = Vector3.Dot(project_face_vector, vRight) / Vector3.Dot(vRight, vRight) / Convert.ToSingle(distance) * Convert.ToSingle(camera_scale);
-        float y = Vector3.Dot(project_face_vector, vUp) / Vector3.Dot(vUp, vUp) / Convert.ToSingle(distance) * Convert.ToSingle(camera_scale);
+        float x = Vector3.Dot(project_face_vector, vRight) / Convert.ToSingle(distance) * Convert.ToSingle(camera_scale);
+        float y = Vector3.Dot(project_face_vector, vUp) / Convert.ToSingle(distance) * Convert.ToSingle(camera_scale);
         Vector2 vRes = new Vector2(x, y);
         return vRes;
     }
@@ -135,13 +134,24 @@ class Program
 
     public static void DrawLine(int i, int j)
     {
-        Vector2 vec1 = ProjectToCamera(cube_vecs[i]);
-        Vector2 vec2 = ProjectToCamera(cube_vecs[j]);
+        Vector3 p1 = cube_vecs[i];
+        Vector3 p2 = cube_vecs[j];
 
-        if(vec1 == new Vector2(0xdeadbeef, 0xdeadbeef) || vec2 == new Vector2(0xdeadbeef, 0xdeadbeef))
+        double d1 = Vector3.Dot(vFront, p1 - camera_pos);
+        double d2 = Vector3.Dot(vFront, p2 - camera_pos);
+
+        if (d1 <= 0 && d2 <= 0) return;
+        if (d1 <= 0 || d2 <= 0) 
         {
-            return;
+            double k = d1 / (d1 - d2);
+            Vector3 pAmong = p1 + Convert.ToSingle(k) * (p2 - p1);
+            pAmong += vFront * 0.01f;
+            if (d1 <= 0) p1 = pAmong;
+            else p2 = pAmong;
         }
+
+        Vector2 vec1 = ProjectToCamera(p1);
+        Vector2 vec2 = ProjectToCamera(p2);
 
         Vector2 pos1 = ConvertVector2ToPos(vec1);
         Vector2 pos2 = ConvertVector2ToPos(vec2);
